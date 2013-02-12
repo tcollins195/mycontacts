@@ -1,1 +1,38 @@
-@CHARSET "ISO-8859-1";
+header {
+	background:transparent url(images/iOS-contacts-logo.png) no-repeat;
+	padding:20px 0px 25px 260px;
+}
+
+header a {
+	display:inline-block;
+	color:#000;
+	transition:color 1s;
+	-webkit-transition:color 1s;
+}
+
+header a:hover {
+	color:#149125;
+	text-decoration:none;
+	-webkit-transform:rotate(1deg);
+}
+
+header h2 {
+	font-size:22px;
+	color:#999;
+}
+
+header h1, header h2 {
+	
+}
+
+input.phone {
+	text-align:center;	
+}
+
+input.phone.span1 {
+	width:50px;
+}
+
+input.phone.span2 {
+	width:80px;
+}

@@ -6,7 +6,7 @@
  * @param unknown_type $name
  * @param unknown_type $placeholder
  */
-function input($name, $placeholder, $value=null) {  // $value is an optional input paramter!!!!!!
+function input($name, $placeholder, $value=null, $class='') {  // $value is an optional input paramter!!!!!!
 	if($value == null && isset($_SESSION['POST'][$name])) {
 		$value = $_SESSION['POST'][$name];		// 2D array
 		
@@ -14,17 +14,12 @@ function input($name, $placeholder, $value=null) {  // $value is an optional inp
 		unset($_SESSION['POST'][$name]);
 
 		if($value == '') {		// nothing was entered for this item
-			$class = 'class="error"';
-		} else {
-			$class = '';
+			$class .= ' error';
 		}
-	} elseif($value != null) {
-		$class = '';	// do not mark as error
-	} else {		// No session data
+	}  else {		// No session data
 		$value = '';
-		$class = '';		// 1st time visiting 
 	}	
-	return "<input $class type=\"text\" name=\"$name\" placeholder=\"$placeholder\" value=\"$value\" />";
+	return "<input class=\"$class\" type=\"text\" name=\"$name\" placeholder=\"$placeholder\" value=\"$value\" />";
 }
 
 /**
