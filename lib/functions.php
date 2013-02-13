@@ -1,4 +1,9 @@
 <?php
+function format_phone($phone) {
+	return '<a href="tel:'.$phone.'">('.substr($phone,0,3).') '.substr($phone,3,3).'-'.substr($phone,-4).'</a>';
+}
+
+
 /**
  * Generates an HTML input element with the given attribute values.
  * This function also examines SESSION data for previously
