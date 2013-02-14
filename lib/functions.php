@@ -1,4 +1,9 @@
 <?php
+function connect() {
+	return new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+}
+
+
 function format_phone($phone) {
 	return '<a href="tel:'.$phone.'">('.substr($phone,0,3).') '.substr($phone,3,3).'-'.substr($phone,-4).'</a>';
 }

@@ -16,7 +16,7 @@ require('lib/functions.php');
 		
 		<!-- MyContact CSS -->
 		<link rel="stylesheet" type="text/css" href="styles.css" />
-		<title>My Bands</title>
+		<title>My Contacts</title>
 	</head>
 	<body>
 		<div id="wrapper" class="container" >

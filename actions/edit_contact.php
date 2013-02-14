@@ -3,7 +3,7 @@
 <?php
 session_start();
 
-require('../config/db.php');
+require_once('../config/db.php');
 
 $required = array(
 		'contact_firstname',
