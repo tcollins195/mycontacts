@@ -1,6 +1,4 @@
 <?php 
-require('../config/db.php');
-
 // Connect to the DB
 $conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
@@ -22,52 +20,27 @@ $conn->close();
 	<div class="control-group">
 		<label class="control-label" for="contact_name">Name</label>
 		<div class="controls">
-			<?php echo input('contact_firstname', 'first name')?>
-			<?php echo input('contact_lastname', 'last name')?>
+			<?php echo input('contact_firstname', 'first name',$contact_firstname)?>
+			<?php echo input('contact_lastname', 'last name',$contact_lastname)?>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" for="contact_email">Email</label>
 		<div class="controls">
-			<?php echo input('contact_email', 'you@example.com')?>
+			<?php echo input('contact_email', 'you@example.com',$contact_email)?>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" for="contact_phone1">Phone</label>
 		<div class="controls">
-			(<?php echo input('contact_phone1', '999',null,'phone span1')?>)
-			<?php echo input('contact_phone2', '888',null,'phone span1')?> - 
-			<?php echo input('contact_phone3', '7777',null,'phone span2')?>
+			(<?php echo input('contact_phone1', '999',substr($contact_phone,0,3),'phone span1')?>)
+			<?php echo input('contact_phone2', '888',substr($contact_phone,3,3),'phone span1')?> - 
+			<?php echo input('contact_phone3', '7777',substr($contact_phone,-4),'phone span2')?>
 		</div>
 	</div>
 	<div class="form-actions">
-		<button type="submit" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i> Add Contact</button>
-		<button type="button" class="btn">Cancel</button>
+		<input type="hidden" name="contact_id" value="<?php echo $contact_id ?>" />	<!-- $_GET['id'] -->
+		<button type="submit" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i> Confirm Changes</button>
+		<button type="button" class="btn" onclick="window.history.go(-1)">Cancel</button>
 	</div>
-</form>
-
-
-
-
-
-
-<form action="update.php" method="post">
-	<label>First Name</label>
-	<input type="text" name="contact_firstname" value="<?php echo $contact_firstname?>" />
-	<br/>
-	
-	<label>Last Name</label>
-	<input type="text" name="contact_lastname" value="<?php echo $contact_lastname?>" />
-	<br/>
-	
-	<label>Email</label>
-	<input type="text" name="contact_email" value="<?php echo $contact_email?>" />
-	<br/>
-	
-	<label>Phone number</label>
-	<input type="text" name="contact_phone" value="<?php echo $contact_phone?>" />
-	<br/>
-												
-	<input type="hidden" name="id" value="<?php echo $contact_id ?>" />	<!-- $_GET['id'] -->
-	<input type="submit" value="Confirm Changes" />
 </form>

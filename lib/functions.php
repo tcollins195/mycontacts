@@ -11,8 +11,8 @@ function format_phone($phone) {
  * @param unknown_type $name
  * @param unknown_type $placeholder
  */
-function input($name, $placeholder, $value=null, $class='') {  // $value is an optional input paramter!!!!!!
-	if($value == null && isset($_SESSION['POST'][$name])) {
+function input($name, $placeholder, $value='', $class='') {  // $value is an optional input paramter!!!!!!
+	if($value == '' && isset($_SESSION['POST'][$name])) {
 		$value = $_SESSION['POST'][$name];		// 2D array
 		
 		// Remove from session data
@@ -21,9 +21,7 @@ function input($name, $placeholder, $value=null, $class='') {  // $value is an o
 		if($value == '') {		// nothing was entered for this item
 			$class .= ' error';
 		}
-	}  else {		// No session data
-		$value = '';
-	}	
+	}
 	return "<input class=\"$class\" type=\"text\" name=\"$name\" placeholder=\"$placeholder\" value=\"$value\" />";
 }
 

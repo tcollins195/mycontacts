@@ -69,8 +69,8 @@
 			<td><a href="mailto:<?php echo $contact_email ?>"><?php echo $contact_email?></a></td>	
 			<td><?php echo format_phone($contact_phone) ?></td>
 			
-			 <td><a href="./?p=form_edit_contact&id=$contact_id" class="btn btn-warning"><i class="icon-edit icon-white"></i></a>
-				 <a href="./actions/delete_contact.php?$contact_id" class="btn btn-danger"><i class="icon-trash icon-white"></i></a></td>
+			 <td><a href="./?p=form_edit_contact&id=<?php echo $contact_id?>" class="btn btn-warning"><i class="icon-edit icon-white"></i></a>
+				 <a href="./actions/delete_contact.php?<?php echo $contact_id?>" class="btn btn-danger"><i class="icon-trash icon-white"></i></a></td>
 		 </tr>
 	<?php }?>
 	</tbody>

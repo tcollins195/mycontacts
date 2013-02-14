@@ -19,6 +19,7 @@ $required = array(
 // Extract POST data to variables
 extract($_POST);
 
+// Validate form data
 foreach($required as $r) {
 	// If invalid, redirect with message
 	if(!isset($_POST[$r]) || $_POST[$r] == '') {
