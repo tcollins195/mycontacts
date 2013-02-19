@@ -44,3 +44,4 @@ $conn->close();
 		<button type="button" class="btn" onclick="window.history.go(-1)">Cancel</button>
 	</div>
 </form>
+<?php unset($_SESSION['POST']) ?>

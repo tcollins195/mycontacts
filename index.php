@@ -16,6 +16,13 @@ require('lib/functions.php');
 		
 		<!-- MyContact CSS -->
 		<link rel="stylesheet" type="text/css" href="styles.css" />
+		
+		<!-- jQuery -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		
+		<!-- My JS -->
+		<script src="mycontacts.js"></script>
+		
 		<title>My Contacts</title>
 	</head>
 	<body>
