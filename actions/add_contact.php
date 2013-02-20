@@ -6,27 +6,77 @@
 
 <?php
 require_once('../config/db.php');
+require_once('fields.php');
+
+// Extract POST data to variables
+extract($_POST);
+
+// // Combine phone numbers
+// $_POST['contact_phone'] = $_POST['contact_phone1'] + $_POST['contact_phone2'] + $_POST['contact_phone3'];
+
+
+// foreach($fields as $f) {		// numeric and length is 10
+// 	if($f['required']) {
+// 		if($f['type'] == 'numeric') {
+// 		//  if not set      or  there is nothing there or its not a number      or the length isn't 10
+// 			if(!isset($_POST[$f]) || $_POST[$f] == '' || !is_numeric($_POST[$f]) || $f['length'] == $_POST[$f]) {
+// 				$_SESSION['message'] = array(
+// 					'text' => 'Please enter your phone number correctly',
+// 					'type' => 'block'
+// 				);
+				
+// 				// Store form data into session
+// 				$_SESSION['POST'] = $_POST;
+				
+// 				// Set location header
+// 				header('Location:../?p=form_add_contact');
+				
+// 				// Kill script
+// 				die();
+// 			}
+// 		}
+// 		if($f['type'] == 'string') {
+// 			if(!isset($_POST[$f]) || $_POST[$f] == '') {
+// 				// Store message into session
+// 				$_SESSION['message'] = array(
+// 						'text' => 'Please enter all required information.',		/// work!!!
+// 						'type' => 'block'
+// 				);
+			
+// 				// Store form data into session
+// 				$_SESSION['POST'] = $_POST;
+			
+// 				// Set location header
+// 				header('Location:../?p=form_add_contact');
+			
+// 				// Kill script
+// 				die();
+// 			}
+// 		}
+		
+// 	}
+// }
+
+
 
 $required = array(
 	'contact_firstname',
 	'contact_lastname',
 	'contact_email',
-	'contact_phone1',
+	'contact_phone1',	
 	'contact_phone2',
 	'contact_phone3'
 );
 
-// Extract POST data to variables
-extract($_POST);
-
 // Validate form data
 foreach($required as $r) {
 	// If invalid, redirect with message
+	// if not set    or  there is nothing in there
 	if(!isset($_POST[$r]) || $_POST[$r] == '') {
 		// Store message into session
 		$_SESSION['message'] = array(
-				'text' => 'Please enter all required information.',
-				'type' => 'block'
+			'text' => 'Please enter all required information.',
+			'type' => 'block'
 		);
 		
 		// Store form data into session
