@@ -4,7 +4,7 @@ extract($_GET);
 
 // Connect to the DB
 $conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-$sql - "SELECT group_name FROM groups WHERE group_id=$id";
+$sql = "SELECT group_name FROM groups WHERE group_id=$id";
 $results = $conn->query($sql);
 $group = $results->fetch_assoc();
 
@@ -31,23 +31,8 @@ $group = $results->fetch_assoc();
 	$conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 	
 	// Read (SELECT) contacts from the database			exclude quotes
-	if(isset($_GET['q']) && $_GET['q'] != '') {
-		$where = "WHERE group_id=$id";
-		$search_message = "<p>Contacts with last name containing '{$_GET['q']}'</p>";
-		$show_all ='<a href="read.php">Show all contacts</a></br>';
-	} else {
-		$where = '';
-		$search_message = '';	
-		$show_all = '';
-	}
 	
-	if(isset($_GET['sort']) && $_GET['sort'] != '') {
-		$orderby = "ORDER BY contact_{$_GET['sort']}";
-	} else {
-		$orderby = "ORDER BY contact_lastname ASC, contact_firstname";
-	}
-	
-	$sql = "SELECT * FROM contacts $where $orderby";
+	$sql = "SELECT * FROM contacts WHERE group_id=$id ORDER BY contact_lastname ASC, contact_firstname";
 								//		 contact_phone IS NULL
 								//		 contact_phone 4026794965
 	$results = $conn->query($sql);		// in java would be conn.query		function on conn
@@ -58,9 +43,6 @@ $group = $results->fetch_assoc();
 		echo $conn->error;
 		die();		// die() stops execute of the rest of the code
 	}
-	
-	echo $search_message;
-	echo $show_all;
 	
 	// Loop over the contacts & display them
 	//		fetches the next row from the results set as associative array

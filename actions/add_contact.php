@@ -98,7 +98,7 @@ $conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 $contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
 
 // Execute query
-$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone) VALUES ('$contact_firstname','$contact_lastname','$contact_email',$contact_phone)";
+$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone,group_id) VALUES ('$contact_firstname','$contact_lastname','$contact_email',$contact_phone,$group_id)";
 $conn->query($sql);
 
 if($conn->errno > 0) {
@@ -109,12 +109,12 @@ if($conn->errno > 0) {
 $conn->close();
 
 $_SESSION['message'] = array(
-		'text' => 'Your contact has been added.',
-		'type' => 'success'
+	'text' => 'Your contact has been added.',
+	'type' => 'success'
 );
 
 // Redirect to the main page
-header('Location:../?p=list_contacts');
+// header('Location:../?p=list_contacts');
 
 
 

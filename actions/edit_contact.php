@@ -50,7 +50,7 @@ $contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
 
 // Execute the query
 $sql = "UPDATE contacts 
-		SET contact_firstname='$contact_firstname', contact_lastname='$contact_lastname', contact_email='$contact_email', contact_phone=$contact_phone 
+		SET contact_firstname='$contact_firstname', contact_lastname='$contact_lastname', contact_email='$contact_email', contact_phone=$contact_phone, group_id=$group_id
 		WHERE contact_id=$contact_id";
 $conn->query($sql);
 

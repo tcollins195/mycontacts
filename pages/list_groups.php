@@ -10,7 +10,7 @@
 	while(($group = $results->fetch_assoc()) != null) {
 		extract($group);
 		?>
-		<li><a href="./?p=group&id=<?php $group_id ?>"><?php echo $group_name?></a></li>		
+		<li><a href="./?p=group&id=<?php echo $group_id ?>"><?php echo $group_name?></a></li>		
 	<?php	
 	}	
 $conn->close() ?>
