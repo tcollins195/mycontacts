@@ -20,6 +20,9 @@ require('lib/functions.php');
 		<!-- jQuery -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		
+		<!-- Bootstrap JS -->
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		
 		<!-- My JS -->
 		<script src="mycontacts.js"></script>
 		

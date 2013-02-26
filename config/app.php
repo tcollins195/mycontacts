@@ -7,5 +7,8 @@ define('DEFAULT_PAGE','list_contacts');
 $pages = array(
 	'list_contacts' 	=> 'Contacts',
 	'list_groups'		=> 'Groups',
-	'form_add_contact'	=> 'Add'
+	'Add'				=> 	array(
+								'form_add_contact' 	=> 'New Contact',
+								'form_add_group' 	=> 'New Group' 	
+							)
 );

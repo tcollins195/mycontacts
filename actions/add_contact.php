@@ -114,7 +114,7 @@ $_SESSION['message'] = array(
 );
 
 // Redirect to the main page
-// header('Location:../?p=list_contacts');
+header('Location:../?p=list_contacts');
 
 
 

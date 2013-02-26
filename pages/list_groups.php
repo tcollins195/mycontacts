@@ -1,12 +1,15 @@
 <h2>Groups</h2>
 
-<ul>
+<ul class="nav nav-pills nav-stacked">
 	<?php 
-	$conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+	// Connect to DB
+	$conn = connect(); 
 	
+	// Query groups
 	$sql = "SELECT * FROM groups ORDER BY group_name";
 	$results = $conn->query($sql);
 	
+	// Loop over results set
 	while(($group = $results->fetch_assoc()) != null) {
 		extract($group);
 		?>

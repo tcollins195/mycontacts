@@ -71,12 +71,5 @@ $conn->close();
 		<button type="submit" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i> Confirm Changes</button>
 		<button type="button" class="btn" onclick="window.history.go(-1)">Cancel</button>
 	</div>
-	
-	
-	
-	
-	
-	
-	
 </form>
 <?php unset($_SESSION['POST']) ?>

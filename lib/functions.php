@@ -31,7 +31,9 @@ function input($name, $placeholder, $value='', $class='') {  // $value is an opt
 }
 
 /**
- * Generates an HTML select element with the given name attribute and option elements
+ * Generates an HTML <select> element with the given name attribute and option elements
+ * If a value is provided, the corresponding <option> is marked as selected.
+ * If a value is not provided (null), and session data is present, session value is used.
  * This function also examines session data for a previously submitted value
  * @param String $name Name attribute
  * @param Array $options Array of options in the form value => text
@@ -86,7 +88,48 @@ function radio($name, $options) {
 	echo $radio;
 }
 
+/**
+ * Query the provided table for all rows, sorted by name using the fields
+ * table_id and table_name
+ * @param unknown_type $table name of DB table
+ * @param unknown_type $default_value value of first option (1st key in array)
+ * @param unknown_type $default_name name of the first option (1st value in array)
+ */
+function get_options($table, $default_value=0,$default_name='Select') {
+	$options = array($default_value => $default_name);
+	
+	// Field names
+	$id_field = $table.'_id';
+	$name_field = $table.'_name';
+	
+	// Connect to DB
+	$conn = connect();
+	
+	// Query table for id's and names
+	$sql = "SELECT $id_field, $name_field FROM {$table}s ORDER BY $name_field";
+	$results = $conn->query($sql);
+	
+	// Loop over result set, adding all rows to $options
+	while (($row = $results->fetch_assoc()) != null) {
+		$key = $row[$id_field];
+		$value = $row[$name_field];
+		$options[$key] = $value;
+	}
+	
+	// Close DB connection
+	$conn->close();
+	
+	// Return options
+	return $options;
+}
+
 ?>
+
+
+
+
+
+
 
 
 
