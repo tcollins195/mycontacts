@@ -30,7 +30,7 @@ foreach($required as $r) {
 		$_SESSION['POST'] = $_POST;
 		
 		// Set location header
-		header('Location:../?p=form_add_contact');
+		header('Location:../?p=form_add_group');
 		
 		// Kill script
 		die();
@@ -42,10 +42,8 @@ foreach($required as $r) {
 // Connect to DB
 $conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 	
-$contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
-
 // Execute query
-$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone,group_id) VALUES ('$contact_firstname','$contact_lastname','$contact_email',$contact_phone,$group_id)";
+$sql = "INSERT INTO groups (group_name) VALUES ('$group_name')";
 $conn->query($sql);
 
 if($conn->errno > 0) {
@@ -56,7 +54,7 @@ if($conn->errno > 0) {
 $conn->close();
 
 $_SESSION['message'] = array(
-	'text' => 'Your contact has been added.',
+	'text' => 'Your group has been added.',
 	'type' => 'success'
 );
 

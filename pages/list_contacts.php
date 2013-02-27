@@ -12,6 +12,7 @@
 			<th><a href="list_contacts.php?sort=lastname">Last</a></th>
 			<th><a href="list_contacts.php?sort=email">Email</a></th>
 			<th><a href="list_contacts.php?sort=phone">Phone</a></th>
+			<th>Group</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -38,7 +39,8 @@
 			$orderby = "ORDER BY contact_lastname ASC, contact_firstname";
 		}
 		
-		$sql = "SELECT * FROM contacts $where $orderby";
+//		$sql = "SELECT * FROM contacts $where $orderby";
+		$sql = 'SELECT * FROM contacts LEFT JOIN groups ON contacts.group_id=groups.group_id ORDER BY contact_lastname,contact_firstname';
 									//		 contact_phone IS NULL
 									//		 contact_phone 4026794965
 		$results = $conn->query($sql);		// in java would be conn.query		function on conn
@@ -65,12 +67,13 @@
 				<td><?php echo $contact_lastname ?></td>
 				<td><a href="mailto:<?php echo $contact_email ?>"><?php echo $contact_email?></a></td>	
 				<td><?php echo format_phone($contact_phone) ?></td>
-				<?php 	$onclick = "return confirm('Are you sure you want to delete $contact_firstname?')"?>
+				<td><a class="label label-info" href="./?p=group&id=<?php echo $group_id ?>"><?php echo $group_name?></a></td>				
+				<?php $onclick = "return confirm('Are you sure you want to delete $contact_firstname?')"?>				
 				<td>
 					<a class="btn btn-warning" href="./?p=form_edit_contact&id=<?php echo $contact_id?>"><i class="icon-edit icon-white"></i></a> 
-					<form class="form-inline" action="actions/delete_contact.php" method="post">
+					<form  class="form-inline" action="actions/delete_contact.php" method="post">
 						<input type="hidden" name="contact_id" value="<?php echo $contact_id?>" />
-						<button onclick="$onclick" class="btn btn-danger" type="submit"><i class="icon-trash icon-white"></i></button>
+						<button onclick=<?php echo $onclick ?> class="btn btn-danger" type="submit"><i class="icon-trash icon-white"></i></button>
 					</form>
 				</td> 
 			 </tr>
