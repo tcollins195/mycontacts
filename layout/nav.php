@@ -10,7 +10,7 @@ if(isset($_GET['p'])) {
 ?>
 
 
-<div class="navbar">
+<div class="navbar" >
 	<div class="navbar-inner">
 		<a class="brand" href="./">MyContacts</a>
 		<ul class="nav">
@@ -35,5 +35,17 @@ if(isset($_GET['p'])) {
 				<?php endif ?>			
 			<?php endforeach ?>
 		</ul>
+								<!-- Get string will be override by form elements -->
+		<form method="get" class="form-search form-inline pull-right">
+			<input type="hidden" name="p" value="list_contacts" />
+			<div class="input-append">
+				<input placeholder="Search contacts" type="text" name="q" class="span2 input-medium search-query">
+				<button type="submit"><i class="icon-search"></i></button>
+			</div>
+		</form>	
 	</div>
 </div>
+
+
+
+

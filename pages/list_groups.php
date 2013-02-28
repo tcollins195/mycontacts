@@ -20,7 +20,7 @@
 		// Loop over results set
 		while(($group = $results->fetch_assoc()) != null) {
 				extract($group); ?>
-			<tr>
+			<tr data-location="./?p=group&id=<?php echo $group_id ?>">
 				<td><a href="./?p=group&id=<?php echo $group_id ?>"><?php echo $group_name?></a></td>
 				<td><span class="badge"><?php echo $num_contacts?></span></td>				
 			</tr>			
