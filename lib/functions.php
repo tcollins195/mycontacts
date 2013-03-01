@@ -1,4 +1,9 @@
 <?php
+function is_search() {
+	return isset($_GET['q']) && $_GET['q'] != '';
+}
+
+
 function connect() {
 	return new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 }

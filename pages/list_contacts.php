@@ -3,7 +3,8 @@
 if(isset($_GET['q']) && $_GET['q'] != '') {
 	extract($_GET);
 	$where = "WHERE contact_lastname OR contact_firstname LIKE '%$q%'";
-	$search_message = "<p>Contacts with last name containing '$q'</p>";?> 
+//	$search_message = "<p>Contacts with last name containing '$q'</p>";
+	?>
 	<div class="alert alert-info">Contacts with last name containing '<?php echo $q ?>'
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 	</div> 
@@ -12,7 +13,7 @@ if(isset($_GET['q']) && $_GET['q'] != '') {
 	$show_all ='<a href="./">Show all contacts</a></br>';
 } else {
 	$where = '';
-	$search_message = '';
+//	$search_message = '';
 	$show_all = '';
 }
 
@@ -28,25 +29,22 @@ if(isset($_GET['q']) && $_GET['q'] != '') {
 
 
 <table class="table table-hover">
+	<caption><?php echo $show_all ?></caption>
 	<thead>
 		<tr>
 			<?php 
 				if(isset($_GET['q']) && $_GET['q'] != '') {	
-					$sort_append = '';
+					$sort_append = '?p=list_contacts&q=a&';
 				} else {
 					$sort_append = './?';
 				}
-			
-			
-			
-			
 			?>
 		
 			<th><a href="<?php echo $sort_append ?>sort=firstname">First</a></th>
 			<th><a href="<?php echo $sort_append ?>sort=lastname">Last</a></th>
 			<th><a href="<?php echo $sort_append ?>sort=email">Email</a></th>
 			<th><a href="<?php echo $sort_append ?>sort=phone">Phone</a></th>
-			<th>Group</th>
+			<th><a href="<?php echo $sort_append ?>sort=name">Group</a></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -58,7 +56,12 @@ if(isset($_GET['q']) && $_GET['q'] != '') {
 		
 		if(isset($_GET['sort']) && $_GET['sort'] != '') {
 			extract($_GET);
-			$orderby = "contact_$sort";
+			
+			if($sort == 'name') {
+				$orderby = "group_$sort";
+			} else {
+				$orderby = "contact_$sort";
+			}
 		} else {
 			$orderby = "contact_lastname ASC, contact_firstname";
 		}
@@ -76,8 +79,8 @@ if(isset($_GET['q']) && $_GET['q'] != '') {
 			die();		// die() stops execute of the rest of the code
 		}
 		
-		echo $search_message;
-		echo $show_all;
+//		echo $search_message;
+
 		
 		// Loop over the contacts & display them
 		//		fetches the next row from the results set as associative array
