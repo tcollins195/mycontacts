@@ -1,5 +1,3 @@
-<pre>$_POST: <?php print_r($_POST)?></pre>
-
 <?php
 session_start();
 
